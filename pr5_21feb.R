@@ -41,7 +41,7 @@ print(cuarto_cuartil)
 hist(datos_arqueologicos$numero_artefactos)
 mean(datos_arqueologicos$numero_artefactos)
 median(datos_arqueologicos$numero_artefactos)
-#Al ser la media y la mediana iguales, hablamos de una distribución de frecuencias simétrica. 
+#Al ser la media y la mediana iguales, hablamos de una distribución de frecuencias simétrica o normal. 
 
 #Ej.4
 library(ggplot2)
@@ -49,11 +49,30 @@ boxplot(datos_arqueologicos$numero_artefactos)
 #Los cuantiles antes calculados Q1, Q2, Q3 y Q4 muestran que estamos ante una distribución simétrica, distibuidos grosso modo, un cuarto de los datos por debajo del 25%, un cuarto de los datos por encima del 75% y la mitad de los datos entre Q1 y Q2
 
 #Ej.5
+datos_arqueologicos$yacimientos <- factor(datos_arqueologicos$yacimientos, levels = paste0("Site", 1:10))
+agregado_num_arte_yacimiento <- aggregate(numero_artefactos ~ yacimientos, data = datos_arqueologicos, FUN = mean)
+max_agregado_num_artefactos 
+
+
 barplot(table(datos_arqueologicos$numero_artefactos,datos_arqueologicos$yacimientos), main = "Número medio de artefactos")
 
 #Ej.6
-ggplot(df, aes(numero_artefactos = x, yacimientos = y, fill = valor)) +
-  geom_tile()
+ggplot(datos_arqueologicos, aes(x = longitud, y = latitud)) +
+  geom_bin2d() +
+  labs(title = "Mapa de calor de artefactos", x = "Longitud", y = "Latitud")
 
 #Ej.7
+artefactos_totales <- sum(datos_arqueologicos$numero_artefactos)
+print(artefactos_totales)
+
+#Ej.8
+mediana_artefactos <- median(datos_arqueologicos$numero_artefactos)
+print(mediana_artefactos)
+
+#Ej.9
+desviacion_estandar_artefactos <- sd(datos_arqueologicos$numero_artefactos)
+print(desviacion_estandar_artefactos)
+
+#Ej.10
+which.max(datos_arqueologicos$numero_artefactos)
 
