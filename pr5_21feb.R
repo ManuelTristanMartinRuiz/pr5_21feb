@@ -52,4 +52,8 @@ boxplot(datos_arqueologicos$numero_artefactos)
 barplot(table(datos_arqueologicos$numero_artefactos,datos_arqueologicos$yacimientos), main = "Número medio de artefactos")
 
 #Ej.6
-heatmap(datos_arqueologicos$numero_artefactos)
+ggplot(df, aes(numero_artefactos = x, yacimientos = y, fill = valor)) +
+  geom_tile()
+
+#Ej.7
+
