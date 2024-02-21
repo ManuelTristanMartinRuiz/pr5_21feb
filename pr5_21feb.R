@@ -76,3 +76,14 @@ print(desviacion_estandar_artefactos)
 #Ej.10
 which.max(datos_arqueologicos$numero_artefactos)
 
+#Ej.11
+tabla_resumen <- data.frame(
+  media = media_numero_artefactos,
+  mediana = mediana_artefactos,
+  desviacion_estandar = desviacion_estandar_artefactos
+)
+print(tabla_resumen)
+View(tabla_resumen)
+
+#Ej.12
+boxplot(datos_arqueologicos$numero_artefactos, datos_arqueologicos$yacimientos)
