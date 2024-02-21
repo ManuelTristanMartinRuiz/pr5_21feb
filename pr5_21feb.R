@@ -48,11 +48,10 @@ library(ggplot2)
 boxplot(datos_arqueologicos$numero_artefactos)
 #Los cuantiles antes calculados Q1, Q2, Q3 y Q4 muestran que estamos ante una distribución simétrica, distibuidos grosso modo, un cuarto de los datos por debajo del 25%, un cuarto de los datos por encima del 75% y la mitad de los datos entre Q1 y Q2
 
-#Ej.5
+#Ej.5 Sin terminar. 
 datos_arqueologicos$yacimientos <- factor(datos_arqueologicos$yacimientos, levels = paste0("Site", 1:10))
 agregado_num_arte_yacimiento <- aggregate(numero_artefactos ~ yacimientos, data = datos_arqueologicos, FUN = mean)
 max_agregado_num_artefactos 
-
 
 barplot(table(datos_arqueologicos$numero_artefactos,datos_arqueologicos$yacimientos), main = "Número medio de artefactos")
 
@@ -86,4 +85,8 @@ print(tabla_resumen)
 View(tabla_resumen)
 
 #Ej.12
-boxplot(datos_arqueologicos$numero_artefactos, datos_arqueologicos$yacimientos)
+boxplot(numero_artefactos~yacimientos,  
+        main = "Artefactos por yacimiento", 
+        xlab = "Yacimientos", 
+        ylab = "Número de artefactos")
+
